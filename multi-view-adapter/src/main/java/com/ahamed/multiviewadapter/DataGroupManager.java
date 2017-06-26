@@ -55,11 +55,19 @@ public class DataGroupManager<H, M> extends DataListUpdateManager<M> {
   }
 
   BaseDataManager getDataManagerForPosition(int itemPositionInManager) {
-    if (itemPositionInManager == 0) {
+    if (itemPositionInManager < headerItemManager.size()) {
       return headerItemManager;
     } else {
       return this;
     }
+  }
+
+  public BaseDataManager getHeaderItemManager() {
+    return headerItemManager;
+  }
+
+  public int getHeaderItemSize() {
+    return headerItemManager.size();
   }
 
   @Override int size() {
