@@ -45,6 +45,7 @@ public class GridAdapterActivity extends BaseActivity {
     GridLayoutManager glm = new GridLayoutManager(getApplicationContext(), 3);
 
     GridAdapter adapter = new GridAdapter(convertDpToPixel(4, this));
+    adapter.getItemTouchHelper().attachToRecyclerView(recyclerView);
     adapter.setSpanCount(3);
 
     recyclerView.addItemDecoration(adapter.getItemDecorationManager());

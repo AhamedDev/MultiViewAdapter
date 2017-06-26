@@ -40,6 +40,7 @@ public class ComplexListActivity extends BaseActivity {
     GridLayoutManager glm = new GridLayoutManager(getApplicationContext(), 3);
 
     ComplexListAdapter adapter = new ComplexListAdapter(this);
+    adapter.getItemTouchHelper().attachToRecyclerView(recyclerView);
     adapter.setSpanCount(3);
 
     glm.setSpanSizeLookup(adapter.getSpanSizeLookup());
