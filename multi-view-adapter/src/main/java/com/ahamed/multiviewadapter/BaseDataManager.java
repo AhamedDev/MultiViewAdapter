@@ -25,7 +25,7 @@ import com.ahamed.multiviewadapter.listener.MultiSelectionChangedListener;
 import java.util.ArrayList;
 import java.util.List;
 
-class BaseDataManager<M> implements ListUpdateCallback {
+public class BaseDataManager<M> implements ListUpdateCallback {
 
   final RecyclerAdapter adapter;
   private List<M> dataList = new ArrayList<>();
