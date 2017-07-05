@@ -69,6 +69,9 @@ public class BaseViewHolder<M> extends ViewHolder
    * Can be called by the child view holders to toggle the selection.
    */
   protected final void toggleItemSelection() {
+    if (actionListener == null) {
+      return;
+    }
     actionListener.onItemSelectionToggled(getAdapterPosition());
   }
 
@@ -77,6 +80,9 @@ public class BaseViewHolder<M> extends ViewHolder
    * status.
    */
   protected final void toggleItemExpansion() {
+    if (actionListener == null) {
+      return;
+    }
     actionListener.onItemExpansionToggled(getAdapterPosition());
   }
 
@@ -85,6 +91,9 @@ public class BaseViewHolder<M> extends ViewHolder
    * status.
    */
   protected final void toggleGroupExpansion() {
+    if (actionListener == null) {
+      return;
+    }
     actionListener.onGroupExpansionToggled(getAdapterPosition());
   }
 
@@ -113,7 +122,7 @@ public class BaseViewHolder<M> extends ViewHolder
    * @see BaseViewHolder#toggleItemSelection()
    */
   public final boolean isItemSelected() {
-    return actionListener.isItemSelected(getAdapterPosition());
+    return actionListener != null && actionListener.isItemSelected(getAdapterPosition());
   }
 
   /**
@@ -121,7 +130,7 @@ public class BaseViewHolder<M> extends ViewHolder
    * @see BaseViewHolder#toggleItemExpansion()
    */
   public final boolean isItemExpanded() {
-    return actionListener.isItemExpanded(getAdapterPosition());
+    return actionListener != null && actionListener.isItemExpanded(getAdapterPosition());
   }
 
   /**
@@ -130,7 +139,7 @@ public class BaseViewHolder<M> extends ViewHolder
    * @see RecyclerAdapter#stopActionMode() ()
    */
   public final boolean isInActionMode() {
-    return actionListener.isAdapterInActionMode();
+    return actionListener != null && actionListener.isAdapterInActionMode();
   }
 
   /**
@@ -159,6 +168,9 @@ public class BaseViewHolder<M> extends ViewHolder
    * The method lets the user to start dragging the viewholder
    */
   public final void startDrag() {
+    if (actionListener == null) {
+      return;
+    }
     actionListener.onStartDrag(this);
   }
 

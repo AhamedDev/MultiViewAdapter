@@ -34,22 +34,29 @@ import java.util.List;
   }
 
   @Override public int getOldListSize() {
+    if (oldList == null) return 0;
     return oldList.size();
   }
 
   @Override public int getNewListSize() {
+    if (newList == null) return 0;
     return newList.size();
   }
 
   @Override public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
-    return oldList.get(oldItemPosition).equals(newList.get(newItemPosition));
+    return oldList != null && newList != null && oldList.get(oldItemPosition)
+        .equals(newList.get(newItemPosition));
   }
 
   @Override public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
-    return areContentsTheSame(oldList.get(oldItemPosition), newList.get(newItemPosition));
+    return oldList != null && newList != null && areContentsTheSame(oldList.get(oldItemPosition),
+        newList.get(newItemPosition));
   }
 
   @Nullable @Override public Object getChangePayload(int oldItemPosition, int newItemPosition) {
+    if (oldList == null || newList == null) {
+      return super.getChangePayload(oldItemPosition, newItemPosition);
+    }
     Object payload = getChangePayload(oldList.get(oldItemPosition), newList.get(newItemPosition));
     return payload != null ? payload : super.getChangePayload(oldItemPosition, newItemPosition);
   }

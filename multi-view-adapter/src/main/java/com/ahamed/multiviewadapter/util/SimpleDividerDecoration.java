@@ -45,7 +45,7 @@ public class SimpleDividerDecoration implements ItemDecorator {
   private static final int[] ATTRS = new int[] { android.R.attr.listDivider };
   private final Rect mBounds = new Rect();
   private final Drawable mDivider;
-  private int mOrientation;
+  private int mOrientation = VERTICAL;
 
   public SimpleDividerDecoration(Context context, int orientation) {
     final TypedArray a = context.obtainStyledAttributes(ATTRS);
@@ -82,8 +82,7 @@ public class SimpleDividerDecoration implements ItemDecorator {
 
   public void setOrientation(int orientation) {
     if (orientation != HORIZONTAL && orientation != VERTICAL) {
-      throw new IllegalArgumentException(
-          "Invalid orientation. It should be either HORIZONTAL or VERTICAL");
+      return;
     }
     mOrientation = orientation;
   }

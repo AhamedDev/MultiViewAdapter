@@ -51,11 +51,11 @@ final class ItemBinderTouchCallback extends ItemTouchHelper.Callback {
     if (source.getItemViewType() != target.getItemViewType()) {
       return false;
     }
-    adapter.onMove(source.getAdapterPosition(), target.getAdapterPosition());
+    if (adapter != null) adapter.onMove(source.getAdapterPosition(), target.getAdapterPosition());
     return true;
   }
 
   @Override public void onSwiped(RecyclerView.ViewHolder viewHolder, int i) {
-    adapter.onItemDismiss(viewHolder.getAdapterPosition());
+    if (adapter != null) adapter.onItemDismiss(viewHolder.getAdapterPosition());
   }
 }
