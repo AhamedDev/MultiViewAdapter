@@ -18,6 +18,7 @@ package com.ahamed.multiviewadapter;
 
 import android.graphics.Canvas;
 import android.graphics.Rect;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -40,7 +41,7 @@ class ItemDecorationManager extends RecyclerView.ItemDecoration {
 
   private final CoreRecyclerAdapter adapter;
 
-  ItemDecorationManager(CoreRecyclerAdapter adapter) {
+  ItemDecorationManager(@NonNull CoreRecyclerAdapter adapter) {
     this.adapter = adapter;
   }
 

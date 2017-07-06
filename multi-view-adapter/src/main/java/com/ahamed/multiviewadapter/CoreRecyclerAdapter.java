@@ -32,7 +32,7 @@ import static com.ahamed.multiviewadapter.RecyclerAdapter.EXPANDABLE_MODE_MULTIP
 import static com.ahamed.multiviewadapter.RecyclerAdapter.EXPANDABLE_MODE_NONE;
 import static com.ahamed.multiviewadapter.RecyclerAdapter.EXPANDABLE_MODE_SINGLE;
 
-class CoreRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder> {
+public class CoreRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
   final List<BaseDataManager> dataManagers = new ArrayList<>();
   final ItemDecorationManager itemDecorationManager;
@@ -76,11 +76,14 @@ class CoreRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     }
 
     @Override public void onStartDrag(BaseViewHolder viewHolder) {
+      if (itemTouchHelper == null) {
+        return;
+      }
       itemTouchHelper.startDrag(viewHolder);
     }
   };
 
-  CoreRecyclerAdapter() {
+  public CoreRecyclerAdapter() {
     itemDecorationManager = new ItemDecorationManager(this);
   }
 

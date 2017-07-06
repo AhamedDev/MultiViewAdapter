@@ -25,7 +25,7 @@ import com.ahamed.multiviewadapter.listener.MultiSelectionChangedListener;
 import java.util.ArrayList;
 import java.util.List;
 
-class BaseDataManager<M> implements ListUpdateCallback {
+public class BaseDataManager<M> implements ListUpdateCallback {
 
   final RecyclerAdapter adapter;
   private List<M> dataList = new ArrayList<>();
@@ -33,7 +33,7 @@ class BaseDataManager<M> implements ListUpdateCallback {
   private ItemSelectionChangedListener<M> itemSelectionChangedListener;
   private MultiSelectionChangedListener<M> multiSelectionChangedListener;
 
-  BaseDataManager(@NonNull RecyclerAdapter adapter) {
+  public BaseDataManager(@NonNull RecyclerAdapter adapter) {
     this.adapter = adapter;
   }
 
@@ -84,8 +84,7 @@ class BaseDataManager<M> implements ListUpdateCallback {
    */
   public final void setSelectedItems(@NonNull List<M> selectedItems) {
     if (!(adapter instanceof SelectableAdapter)) {
-      throw new IllegalStateException(
-          "Make sure your adapter extends from com.ahamed.multiviewadapter.SelectableAdapter");
+     return;
     }
     if (size() < 0) {
       return;
@@ -116,8 +115,7 @@ class BaseDataManager<M> implements ListUpdateCallback {
    */
   public final void clearSelectedItems() {
     if (!(adapter instanceof SelectableAdapter)) {
-      throw new IllegalStateException(
-          "Make sure your adapter extends from com.ahamed.multiviewadapter.SelectableAdapter");
+      return;
     }
     if (size() < 0) {
       return;
@@ -149,8 +147,7 @@ class BaseDataManager<M> implements ListUpdateCallback {
    */
   public final void setSelectedItem(@NonNull M selectedItem) {
     if (!(adapter instanceof SelectableAdapter)) {
-      throw new IllegalStateException(
-          "Make sure your adapter extends from com.ahamed.multiviewadapter.SelectableAdapter");
+      return;
     }
     if (size() < 0) {
       return;
