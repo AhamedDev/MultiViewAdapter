@@ -110,7 +110,12 @@ class CoreRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder> {
       if (adapterPosition < totalCount) {
         int itemPosition = getItemPositionInManager(adapterPosition);
         if (dataManager instanceof DataGroupManager) {
-          dataManager = ((DataGroupManager) dataManager).getDataManagerForPosition(itemPosition);
+          DataGroupManager groupManager = (DataGroupManager) dataManager;
+          if (itemPosition < groupManager.getHeaderItemSize()) {
+            dataManager = groupManager.getHeaderItemManager();
+          } else {
+            itemPosition -= groupManager.getHeaderItemSize();
+          }
         }
         //noinspection unchecked
         holder.setItem(dataManager.get(itemPosition));
@@ -146,8 +151,13 @@ class CoreRecyclerAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
   ItemBinder getBinderForPosition(int adapterPosition) {
     BaseDataManager dataManager = getDataManager(adapterPosition);
+    int skipHeaderItemSize = 0;
+    if (dataManager instanceof DataGroupManager) {
+      skipHeaderItemSize = ((DataGroupManager) dataManager).getHeaderItemSize();
+    }
     for (ItemBinder baseBinder : binders) {
-      if (baseBinder.canBindData(dataManager.get(getItemPositionInManager(adapterPosition)))) {
+      int itemPosition = getItemPositionInManager(adapterPosition) - skipHeaderItemSize;
+      if (baseBinder.canBindData(dataManager.get(itemPosition))) {
         return baseBinder;
       }
     }
