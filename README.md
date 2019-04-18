@@ -42,7 +42,7 @@ dependencies {
 }
 ```
 
-To use the above sanpshot version add the following to your project's gradle file
+To use the above snapshot version add the following to your project's gradle file
 
 ```gradle
 allprojects {
@@ -54,14 +54,43 @@ allprojects {
 }
 ```
 
+## Core Concepts
+
+Core mantra of MultiViewAdapter - Separation of view logic from data management logic. You get two different components which are :
+
+1. Section - Component to hold your data. All data related updates will run here and proper notify method will be called on the adapter.
+2. ItemBinder - Component which creates and binds your view holder. All view related logic should go here.
+
+
+#### Section
+
+Section is the building block for MultiViewAdapter. Section will hold your data which needs to be displayed inside the recyclerview -  data can be a single item or list of items. When the underlying data is changed the section will calculate the diff and call the correct notify method inside the adapter. You can add as many as Section to an adapter.
+
+![How Section Works GIF](images/how-section-works.gif)
+
+There are different types of sections.
+
+|Name|Description|
+|---|---|
+|ItemSection|Section to display single item|
+|ListSection|Section to display list of items|
+|HeaderSection|Section to display list of items along with a header|
+|NestedSection|Section which can host other section|
+|TreeSection|Section which can display items in tree fashion. Ex: Comment list|
+
+#### ItemBinder
+
+ItemBinder is the class where all view related code should be written. ItemBinder is responsible for creating and binding view holders. The method signatures are kept close to the default ```RecyclerView.Adapter``` method signatures. For each viewtype inside the recyclerview, you need to create an ItemBinder. 
+
+ItemBinder allows you to have different decoration for different view types. Apart from this, by using an ItemBinder you will be able to add Swipe-to-dismiss, drag and drop features.
+
+
 ## Basic Usage
 
 
-Lets create an adapter which displays a list of cars. This the expected output for us :
+Lets create an adapter which displays a list of cars. Follow these steps.
 
-> TODO Add image here
-
-1. You need to create an ItemBinder for your model. ItemBinder is reponsible for creating and binding your view holders. Following is the code snippet of ItemBinder for CarModel class.
+1. You need to create an ItemBinder for your model. ItemBinder is responsible for creating and binding your view holders. Following is the code snippet of ItemBinder for CarModel class.
 
 <b>CarBinder</b>
  
@@ -105,6 +134,7 @@ class CarListActivity extends Activity {
 
       // Create Adapter
       MultiViewAdapter adapter = new MultiViewAdapter();
+      recyclerView.setAdapter(adapter);
 
       // Register Binder
       adapter.registerBinders(new CarItemBinder());
@@ -115,16 +145,9 @@ class CarListActivity extends Activity {
 
       // Add Section to the adapter
       adapter.addSection(listSection);
-
-      // Now set the adapter to the recyclerview
-      recyclerView.setAdapter(adapter);
   }
 }
 ```
-
-> Creation of ItemBinders and using a ListSection might feel like overwhelming step. But this gives you enough flexibility to re-use the ItemBinders across your app. Since MultiViewAdapter can have multiple sections and itembinders these steps are needed.
-
-For advanced usage and features kindly take a look at sample app code. Also you can learn more from the extensive documentation. Take a look at [Wiki home](https://github.com/DevAhamed/MultiViewAdapter/wiki).
 
 ## Changelog
 See the project's Releases page for a list of versions with their changelog. [View Releases](https://github.com/DevAhamed/MultiViewAdapter/releases)<br/>
