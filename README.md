@@ -9,13 +9,15 @@ Recyclerview is one of the powerful widgets inside android framework. But creati
 # Contents
 
 1. [Why this library](#why-this-library)
-2. [Gradle Dependency](#gradle-dependency)
-3. [Core Concepts](#core-concepts)
-4. [Basic Usage](#basic-usage)
-5. [Changelog](#changelog)
-6. [Contribution](#contribution)
-7. [Credits](#credits)
-8. [License](#license)
+2. [Feature Showcase](#feature-showcase)
+3. [Gradle Dependency](#gradle-dependency)
+4. [Core Concepts](#core-concepts)
+5. [Basic Usage](#basic-usage)
+6. [Learn More](#learn-more)
+7. [Changelog](#changelog)
+8. [Contribution](#contribution)
+9. [Credits](#credits)
+10. [License](#license)
 
 
 
@@ -45,6 +47,24 @@ To solve the above problems, you can also use a different library. But all such 
 
 
 MultiViewAdapter solves all of these requirements. The library was specifically designed in a way to not interfere with your object modeling and hierarchy.
+
+
+
+
+## Feature Showcase
+
+Here are the few features which are possible with this library.
+
+Multiple Viewtypes | Multiple Spans | Other Features
+-------------------- | -------------------- | --------------------
+![Multiple Viewtypes](images/multi-view-min.gif) | ![Multiple Span](images/multi-view-min.gif) | ![Other](images/other-features-min.gif)
+[Full resolution](images/multi-view.mp4) | [Full resolution](/images/multi-view.mp4) | [Full resolution](images/other-features.mp4)
+
+
+Selection | Item Expansion | Section Expansion
+-------------------- | -------------------- | --------------------
+![Selection](images/selection-min.gif) | ![Item Expansion](images/item-expansion-min.gif) | ![Section Expansion](images/section-expansion-min.gif)
+[Full resolution](images/selection.mp4) | [Full resolution](/images/item-expansion.mp4) | [Full resolution](images/section-expansion.mp4)
 
 
 
@@ -192,6 +212,17 @@ class CarListActivity extends Activity {
   }
 }
 ```
+
+Yay!! We are done.
+
+
+
+
+## Learn More
+
+1. Documentation Website - If you would like to learn more about various other features, kindly read the documentation. All features are documented with sample code which should help you set-up complex recyclerview adapters.
+2. [Sample App](https://play.google.com/apps/testing/dev.ahamed.mva.sample) - Sample app showcases all the features of the adapter. Also it is an excellent reference for creating most complex usecases
+3. JavaDocs
 
 
 
