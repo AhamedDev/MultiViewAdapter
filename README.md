@@ -58,13 +58,11 @@ Here are the few features which are possible with this library.
 Multiple Viewtypes | Multiple Spans | Other Features
 -------------------- | -------------------- | --------------------
 ![Multiple Viewtypes](images/multi-view-min.gif) | ![Multiple Span](images/multi-view-min.gif) | ![Other](images/other-features-min.gif)
-[Full resolution](images/multi-view.mp4) | [Full resolution](/images/multi-view.mp4) | [Full resolution](images/other-features.mp4)
 
 
 Selection | Item Expansion | Section Expansion
 -------------------- | -------------------- | --------------------
 ![Selection](images/selection-min.gif) | ![Item Expansion](images/item-expansion-min.gif) | ![Section Expansion](images/section-expansion-min.gif)
-[Full resolution](images/selection.mp4) | [Full resolution](/images/item-expansion.mp4) | [Full resolution](images/section-expansion.mp4)
 
 
 
