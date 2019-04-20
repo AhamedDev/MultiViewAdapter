@@ -218,9 +218,9 @@ Yay!! We are done.
 
 ## Learn More
 
-1. Documentation Website - If you would like to learn more about various other features, kindly read the documentation. All features are documented with sample code which should help you set-up complex recyclerview adapters.
+1. [Documentation Website](https://devahamed.github.io/MultiViewAdapter) - If you would like to learn more about various other features, kindly read the documentation. All features are documented with sample code which should help you set-up complex recyclerview adapters.
 2. [Sample App](https://play.google.com/apps/testing/dev.ahamed.mva.sample) - Sample app showcases all the features of the adapter. Also it is an excellent reference for creating most complex usecases
-3. JavaDocs
+3. [JavaDocs](https://devahamed.github.io/javadocs/index.html)
 
 
 
