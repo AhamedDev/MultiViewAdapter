@@ -172,4 +172,28 @@ import static org.junit.Assert.assertFalse;
     adapter.onItemSelectionToggled(25);
     assertTrue(!adapter.isItemSelected(25));
   }
+
+  @Test public void selectionModeTest_Notify() {
+    adapter.setSelectionMode(Mode.MULTIPLE);
+    listSection1.setSelectionMode(Mode.SINGLE);
+    headerSection1.getListSection().setSelectionMode(Mode.SINGLE);
+
+    adapter.onItemSelectionToggled(1);
+    assertTrue(adapter.isItemSelected(1));
+
+    adapter.onItemSelectionToggled(41);
+    assertTrue(adapter.isItemSelected(41));
+    assertTrue(!adapter.isItemSelected(1));
+
+    adapter.onItemSelectionToggled(2);
+    assertTrue(adapter.isItemSelected(2));
+    assertTrue(!adapter.isItemSelected(41));
+
+    adapter.onItemSelectionToggled(25);
+    assertTrue(adapter.isItemSelected(25));
+    assertTrue(!adapter.isItemSelected(1));
+
+    adapter.onItemSelectionToggled(25);
+    assertTrue(!adapter.isItemSelected(25));
+  }
 }
